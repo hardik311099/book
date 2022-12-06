@@ -1,4 +1,3 @@
-
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env' });
@@ -9,35 +8,31 @@ module.exports = function (sequelize, DataTypes) {
     {
       id: {
         allowNull: false,
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV1,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+
         primaryKey: true,
       },
-      name: {
-        allowNull: false,
+      bookname: {
         type: DataTypes.STRING,
       },
-     authore: {
-        allowNull: false,
-        type: DataTypes.STRING
-      },
-     categoryId: {
-        allowNull: false,
-        type: DataTypes.STRING,
-    
-      },
-     price: {
-        allowNull: false,
+      authore: {
         type: DataTypes.STRING,
       },
-      avatar: {
-        type: DataTypes.ARRAY(DataTypes.STRING)
+      images: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+      },
+      category_id: {
+        type: DataTypes.INTEGER,
+      },
+      price: {
+        type: DataTypes.STRING,
       },
     },
     {
       timestamps: true,
       freezeTableName: true,
-      tableName: 'book',
+      tableName: 'Book',
     }
   );
 

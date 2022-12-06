@@ -10,8 +10,8 @@ module.exports = function (sequelize, DataTypes) {
     {
       id: {
         allowNull: false,
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV1,
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
       },
       userName: {
@@ -23,20 +23,20 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         validate: {
           len: {
-            args: [ 6, 128 ],
-            msg: 'Email address must be between 6 and 128 characters in length'
+            args: [6, 128],
+            msg: 'Email address must be between 6 and 128 characters in length',
           },
           isEmail: {
-            msg: 'Email address must be valid'
-          }
-        }
+            msg: 'Email address must be valid',
+          },
+        },
       },
       password: {
         allowNull: false,
         type: DataTypes.STRING,
         validate: {
           notEmpty: true,
-          min:6
+          min: 6,
         },
       },
     },
@@ -44,7 +44,7 @@ module.exports = function (sequelize, DataTypes) {
       indexes: [{ unique: true, fields: ['email'] }],
       timestamps: true,
       freezeTableName: true,
-      tableName: 'admin',
+      tableName: 'Admin',
     }
   );
 
@@ -57,7 +57,6 @@ module.exports = function (sequelize, DataTypes) {
     console.log('JWT:' + process.env.SECRET);
     return createJWToken({ email: this.email, id: this.id });
   };
-
 
   Admin.prototype.authenticate = function authenticate(value) {
     if (bcrypt.compareSync(value, this.password)) return this;

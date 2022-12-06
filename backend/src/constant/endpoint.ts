@@ -1,6 +1,9 @@
 export enum END_POINT {
   USER = '/user',
   SIGNUP = '/signup',
+  CREATE = '/create',
   LOGIN = '/login',
-  GET_USER= '/list'
+  GET = '/list',
+  DELETE = '/delete',
+  UPDATE = '/update',
 }

@@ -2,7 +2,7 @@
  * Required External Modules
  */
 import * as dotenv from 'dotenv';
-import express,{ Express } from 'express';
+import express, { Express } from 'express';
 import cors from 'cors';
 import { json, urlencoded } from 'body-parser';
 
@@ -23,18 +23,22 @@ if (!environment.port) {
 const PORT: number = environment.port || 3000;
 
 export class Server {
-
   private app: Express;
 
   constructor() {
     this.app = express();
-    this.app.use(cors({
-      optionsSuccessStatus: 200
-    }));
-    this.app.use(urlencoded({
-      extended: true
-    }));
+    this.app.use(
+      cors({
+        optionsSuccessStatus: 200,
+      })
+    );
     this.app.use(json());
+
+    this.app.use(
+      urlencoded({
+        extended: true,
+      })
+    );
     this.app.use(responseHandling);
     routes.initRoutes(this.app);
     this.app.use(errorHandlerMiddleware);
@@ -48,4 +52,3 @@ export class Server {
   }
 }
 new Server();
-

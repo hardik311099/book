@@ -1,0 +1,73 @@
+.log {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logwarrep {
+  width: 500px;
+  position: fixed;
+  top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(72, 72, 72, 0.238);
+}
+
+.log_title {
+  font-size: 30px;
+  font-weight: 800;
+}
+.ltitle {
+  margin: 30px 0;
+}
+
+.lifrom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-weight: 500;
+}
+
+.logInput {
+  width: 350px;
+  height: 24px;
+  margin: 5px 0 19px 0;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.log_btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logButton {
+  width: 140px;
+  height: 35px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+.logRegisterButton {
+  width: 200px;
+  height: 35px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 17px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-bottom: 25px;
+}

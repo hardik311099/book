@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import _ from 'lodash';
-import { verifyJWTToken } from '../../config/auth';
-import db from '../../models';
-let model;
+import db from '../../models/index';
+let model = 'Category';
 
 class ApplicationController {
   errors: any;
@@ -11,20 +10,18 @@ class ApplicationController {
   }
 
   async _create(req, res, options = {}, callback = null) {
-    const user = await db[model].findOne({ where: { email: req.body.email } });
-    if (!user) {
-      return db[model]
-        .create(req.body)
-        .then((appuser) =>
-          res.status(201).send({
-            success: true,
-            data: appuser,
-            message: options['message'] || 'Successfully Created',
-          })
-        )
-        .catch((error) => res.status(400).json({ errors: error }));
-    }
-    return res.status(400).json({ message: 'user already exits!' });
+    console.log(req.pick);
+
+    return db[model]
+      .create(req.body)
+      .then((appuser) =>
+        res.status(201).send({
+          success: true,
+          data: appuser,
+          message: options['message'] || 'Successfully Created',
+        })
+      )
+      .catch((error) => res.status(400).json({ errors: error }));
   }
 
   _list(req, res, options = {}, callback = null) {

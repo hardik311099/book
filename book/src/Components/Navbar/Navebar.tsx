@@ -1,29 +1,43 @@
 import React from "react";
 import "./navbar.css";
+import { NavLink } from "react-router-dom";
 
 function Navebar() {
+  let handlClick = () => {
+    console.log("button");
+  };
   return (
     <div>
-      <div className="topbarContainer">
-        <div className="topbarLeft">
-          <span className="logo">Book</span>
-        </div>
-        <div className="topbarCenter">
-          <div className="searchBar">
-            <input
-              placeholder="Search for Book and Category "
-              className="searchInput"
-            />
-            <button type={"button"}>Search</button>
+      <header className="sticky">
+        <div className="topbarContainer">
+          <div className="topbarLeft">
+            <NavLink to="/" className="rounded">
+              <h3 className="logo">Book Shop</h3>
+            </NavLink>
           </div>
-        </div>
-        <div className="topbarRight">
-          <div className="topbarLinks">
-            <span className="topbarLink">All Book</span>|
-            <span className="topbarLink">All Category</span>
+          <div className="topbarCenter">
+            <div className="searchBar">
+              <input
+                placeholder="Search for Book and Category "
+                className="searchInput"
+              />
+              <button onClick={handlClick} className="searchbarButton">
+                Search
+              </button>
+            </div>
           </div>
+          <NavLink to="/" className="button rounded">
+            <span className="icon-home"></span>
+            Book
+          </NavLink>
+          <NavLink to="/category" className="button rounded">
+            Category
+          </NavLink>
+          <NavLink to="/signup" className="button btn rounded">
+            Sign Up
+          </NavLink>
         </div>
-      </div>
+      </header>
     </div>
   );
 }

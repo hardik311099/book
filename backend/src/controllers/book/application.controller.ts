@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import _ from 'lodash';
-import { verifyJWTToken } from '../../config/auth';
-import db from '../../models';
-let model;
+import db from '../../models/index';
+let model = 'Book';
 
 class ApplicationController {
   errors: any;
@@ -11,26 +10,40 @@ class ApplicationController {
   }
 
   async _create(req, res, options = {}, callback = null) {
-    const user = await db[model].findOne({ where: { email: req.body.email } });
-    if (!user) {
-      return db[model]
-        .create(req.body)
-        .then((appuser) =>
-          res.status(201).send({
-            success: true,
-            data: appuser,
-            message: options['message'] || 'Successfully Created',
-          })
-        )
-        .catch((error) => res.status(400).json({ errors: error }));
-    }
-    return res.status(400).json({ message: 'user already exits!' });
+    console.log(req.body);
+
+    // console.log(req.file);
+    // let images = [];
+    // images = req.file.map((img) => {
+    //   images.push(img.fieldname);
+    // });
+
+    return db[model]
+      .create({
+        bookname: req.body.bookname,
+        authore: req.body.authore,
+        images: req.file.originalname,
+        category_id: req.body.category_id,
+        price: req.body.price,
+      })
+      .then((appuser) => {
+        return res.status(201).send({
+          success: true,
+          data: appuser,
+          message: options['message'] || 'Successfully Created',
+        });
+      })
+      .catch((error) => {
+        return res.status(400).json({ errors: error });
+      });
   }
 
   _list(req, res, options = {}, callback = null) {
     return db[model]
       .findAll({ include: [{ all: true }] })
-      .then((data) => res.status(200).send({ success: true, data: data }))
+      .then((data) => {
+        res.status(200).send({ success: true, data: data });
+      })
       .catch((error) => res.status(400).json({ errors: error }));
   }
 
@@ -62,13 +75,13 @@ class ApplicationController {
     const id = req.params.id;
     return db[model]
       .destroy({ where: { id: id } })
-      .then((data) =>
-        res.status(200).send({
+      .then((data) => {
+        return res.status(200).send({
           success: true,
           data: data,
           message: options['message'] || 'Successfully Deleted',
-        })
-      )
+        });
+      })
       .catch((error) => res.status(400).json({ errors: error }));
   }
 
