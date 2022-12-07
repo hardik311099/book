@@ -1,0 +1,56 @@
+.bookadd {
+  top: 130px;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.bookaddwarrep {
+  background-color: rgba(89, 88, 88, 0.42);
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.bookadd_title {
+  font-size: 30px;
+}
+.bookaddfrom {
+  font-weight: 600;
+  font-size: 20px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.bookaddInput {
+  width: 95%;
+  padding: 5px;
+  margin: 5px 5px 15px 5px;
+  border-radius: 5px;
+  border: none;
+}
+.bookadd_btn {
+  display: flex;
+
+  align-self: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.bookaddButton {
+  width: 180px;
+  height: 35px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  font-size: 19px;
+  font-weight: 700;
+}

@@ -14,8 +14,8 @@ class ApplicationController {
     console.log(req.file);
     const reqFiles = [];
     // const url = req.protocol + '://' + req.get('host');
-    for (var i = 0; i < 6; i++) {
-      reqFiles.push(req.files[i].path);
+    for (var i = 0; i < 3; i++) {
+      reqFiles.push('/img/' + req.files[i].originalname);
     }
     return db[model]
       .create({

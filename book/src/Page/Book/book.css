@@ -8,3 +8,34 @@
   justify-content: space-around;
   margin: 10px;
 }
+.buttonadd_buttons {
+  display: flex;
+  justify-content: center;
+}
+.book_add {
+  margin: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.filter_data {
+  width: 10px;
+  margin-right: 20px;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.buttonadd {
+  width: 130px;
+  height: 35px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-left: 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(1, 34, 164);
+  color: white;
+  cursor: pointer;
+}

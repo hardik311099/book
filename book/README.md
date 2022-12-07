@@ -45,15 +45,15 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-Date: 2 Dec, 2022
+Date: 6 Dec, 2022
 Technology: Node JS
 Reports To:
 
 Today I have worked on:
 
-R&D ReactDom(Client,Server), Integreting with Other Libraries, StaticTypeChecking.
-Backend Login & Sign Up Ail Create.
-React Navbar & Sign Up Page Create.
+Backend Book & Category Api Create.
+Tebal Joining.
+Post, put,delete & Get data
 
 Thanks & Regards,
 Hardik Chauhan

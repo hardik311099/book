@@ -5,5 +5,5 @@ export enum ErrorType {
   conflict = 'conflict',
   unauthorized = 'unauthorized',
   unknown_error = 'unknown_error',
-  validation_error = 'validation_error'
+  validation_error = 'validation_error',
 }
