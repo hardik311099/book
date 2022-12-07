@@ -36,7 +36,7 @@ export class Server {
 
     this.app.use(
       urlencoded({
-        extended: true,
+        extended: false,
       })
     );
     this.app.use(responseHandling);

@@ -11,18 +11,17 @@ class ApplicationController {
 
   async _create(req, res, options = {}, callback = null) {
     console.log(req.body);
-
-    // console.log(req.file);
-    // let images = [];
-    // images = req.file.map((img) => {
-    //   images.push(img.fieldname);
-    // });
-
+    console.log(req.file);
+    const reqFiles = [];
+    // const url = req.protocol + '://' + req.get('host');
+    for (var i = 0; i < 6; i++) {
+      reqFiles.push(req.files[i].path);
+    }
     return db[model]
       .create({
         bookname: req.body.bookname,
         authore: req.body.authore,
-        images: req.file.originalname,
+        images: reqFiles.map((f) => f),
         category_id: req.body.category_id,
         price: req.body.price,
       })

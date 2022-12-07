@@ -4,6 +4,6 @@ export enum END_POINT {
   CREATE = '/create',
   LOGIN = '/login',
   GET = '/list',
-  DELETE = '/delete',
-  UPDATE = '/update',
+  DELETE = '/delete/:id',
+  UPDATE = '/update/:id',
 }

@@ -1,12 +1,14 @@
-import multer from 'multer';
+const multer = require('multer');
 
-var storage = multer.diskStorage({
+let storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, '../../../book/public/img/');
+    cb(null, __dirname + '/../../../book/public/img');
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
 });
 
-export let upload = multer({ storage: storage });
+let uploadFile = multer({ storage: storage });
+
+export = uploadFile;

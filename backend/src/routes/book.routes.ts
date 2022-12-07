@@ -1,6 +1,6 @@
 import { BookController } from '../controllers/index';
 import { END_POINT } from '../constant/endpoint';
-import { upload } from '../utils/fileUploader';
+import uploadFile from '../utils/fileUploader';
 
 export function initRoutes(app, router) {
   const apiRoute = router;
@@ -11,7 +11,7 @@ export function initRoutes(app, router) {
     res.status(200).send({ message: 'Admin Server is running!' })
   );
 
-  apiRoute.post(END_POINT.CREATE, upload.single('photos'), Book.create);
+  apiRoute.post(END_POINT.CREATE, uploadFile.array('file', 6), Book.create);
 
   apiRoute.get(END_POINT.GET, Book.list);
 
