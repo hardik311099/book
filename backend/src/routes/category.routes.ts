@@ -9,9 +9,10 @@ export function initRoutes(app, router) {
     res.status(200).send({ message: 'Category Server is runung' });
   });
   apiRoute.post(END_POINT.CREATE, Category.create);
+  apiRoute.get(END_POINT.GETID, Category.findone);
   apiRoute.get(END_POINT.GET, Category.list);
-  // apiRoute.get(END_POINT.GET, Category.list);
   apiRoute.delete(END_POINT.DELETE, Category.delete);
+  apiRoute.put(END_POINT.UPDATE, Category.update);
 
   return router;
 }

@@ -45,15 +45,14 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-Date: 6 Dec, 2022
+Date: 8 Dec, 2022
 Technology: Node JS
 Reports To:
 
 Today I have worked on:
 
-Backend Book & Category Api Create.
-Tebal Joining.
-Post, put,delete & Get data
+Category Data Posted. in Backend usinf from data.
+Data view Book data in dom & post Book Data in progres.
 
 Thanks & Regards,
 Hardik Chauhan

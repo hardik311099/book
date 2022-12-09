@@ -32,7 +32,7 @@ function Book() {
     }
     loadBook();
   });
-
+  let count = 1;
   return (
     <>
       <div className="books">
@@ -58,7 +58,7 @@ function Book() {
           <ul>
             {book.map((b) => (
               <div className="book_body bh" key={b.id}>
-                <div className="book_id">{b.id}</div>
+                <div className="book_id">{count++}</div>
                 <div className="book_name">{b.bookname}</div>
                 <div className="book_authore">{b.authore}</div>
                 <div className="book_image">

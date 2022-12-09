@@ -1,7 +1,15 @@
 {
   "bracketSpacing": true,
+  "printWidth": 80,
+  "proseWrap": "preserve",
   "semi": true,
   "singleQuote": true,
-  "proseWrap": "preserve",
-  "arrowParens": "always"
+  "trailingComma": "all",
+  "tabWidth": 4,
+  "useTabs": true,
+  "parser": "typescript",
+  "arrowParens": "always",
+  "requirePragma": true,
+  "insertPragma": true,
+  "endOfLine": "lf"
 }

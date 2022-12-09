@@ -14,6 +14,9 @@ export class CategoryController extends ApplicationController {
   list(req, res) {
     return super._list(req, res);
   }
+  findone(req, res) {
+    return super._findOne(req, res);
+  }
 
   update(req, res) {
     return super._update(req, res, {

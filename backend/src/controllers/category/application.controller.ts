@@ -32,19 +32,21 @@ class ApplicationController {
   }
 
   _findOne(req, res, callback = null) {
+    const id = req.params.id;
     db[model]
-      .findOne(req.condition || {})
-      .then((data) => {
-        if (typeof callback === 'function') callback(data);
-        else res.status(200).send(data);
+      .findOne({
+        where: {
+          id: id,
+        },
       })
+      .then((data) => res.status(200).send({ success: true, data: data }))
       .catch((error) => res.status(400).json({ errors: error }));
   }
 
   _update(req, res, options = {}, callback = null) {
     const id = req.params.id;
     return db[model]
-      .update(req.body, { where: { id: id } })
+      .update({ name: req.body.name }, { where: { id: id } })
       .then((appfeature) =>
         res.status(201).send({
           success: true,

@@ -1,11 +1,40 @@
-import React, { SyntheticEvent } from "react";
-import { NavLink } from "react-router-dom";
+import axios from "axios";
+import React, { SyntheticEvent, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./signup.css";
 
 function Signup() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    userName: "",
+    email: "",
+    password: "",
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { userName, email, password } = user;
+  const onInputChange = (e: any) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
   const handelSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
-    console.log("submit");
+    setIsLoading(true);
+    let url = "http://localhost:3000/api/v1/admin/signup";
+
+    axios
+      .post(url, user)
+      .then((res: any) => {
+        setIsLoading(false);
+        console.log(res.data);
+        localStorage.setItem("auth-token", res.data.token);
+        navigate("/");
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+    setIsLoading(false);
   };
 
   return (
@@ -19,27 +48,35 @@ function Signup() {
           <form className="sufrom" onSubmit={handelSubmit}>
             <label htmlFor="userName">User Name:</label>
             <input
+              name="userName"
+              onChange={onInputChange}
               placeholder="User Name"
               type={"text"}
+              value={userName}
               className="loginInput"
             />
             <label htmlFor="userName">Email :</label>
-            <input placeholder="Email" type={"email"} className="loginInput" />
+            <input
+              placeholder="Email"
+              type={"email"}
+              value={email}
+              onChange={onInputChange}
+              name="email"
+              className="loginInput"
+            />
             <label htmlFor="userName">Password:</label>
             <input
+              onChange={onInputChange}
+              name="password"
+              value={password}
               placeholder="Password"
               className="loginInput"
               type={"password"}
               min={6}
             />
-            <label htmlFor="userName">Re-Password:</label>
-            <input
-              placeholder="Again Password"
-              className="loginInput"
-              min={6}
-              type={"password"}
-            />
+
             <div className="signup_btn">
+              {isLoading && <p>Sending Request...</p>}
               <button className="loginButton lbtn" type="submit">
                 Sign Up
               </button>

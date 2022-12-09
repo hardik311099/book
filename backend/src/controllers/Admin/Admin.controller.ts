@@ -1,4 +1,4 @@
-import { ApplicationController } from '../category';
+import { ApplicationController } from '.';
 export class AdminController extends ApplicationController {
   constructor() {
     super('Admin');

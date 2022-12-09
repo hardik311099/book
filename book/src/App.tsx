@@ -5,6 +5,7 @@ import "./App.css";
 import BookAdd from "./Components/addbook/BookAdd";
 import CategoryAdd from "./Components/addCategory/CategoryAdd";
 import Navebar from "./Components/Navbar/Navebar";
+import CategoryUpdata from "./Components/UpdateCategory/CategoryUpdate";
 import Book from "./Page/Book/Book";
 import Category from "./Page/Category/Category";
 import Login from "./Page/Login/Login";
@@ -22,6 +23,7 @@ function App() {
           <Route path="/addbook" element={<BookAdd />} />
           <Route path="/category" element={<Category />} />
           <Route path="/addcategory" element={<CategoryAdd />} />
+          <Route path="/updatacategory/:id" element={<CategoryUpdata />} />
         </Routes>
       </div>
     </Router>

@@ -2,7 +2,7 @@
 import _ from 'lodash';
 import { verifyJWTToken } from '../../config/auth';
 import db from '../../models';
-let model;
+let model = 'Admin';
 
 class ApplicationController {
   errors: any;
@@ -36,7 +36,7 @@ class ApplicationController {
 
   _findOne(req, res, callback = null) {
     db[model]
-      .findOne(req.condition || {})
+      .findOne(req.condition)
       .then((data) => {
         if (typeof callback === 'function') callback(data);
         else res.status(200).send(data);

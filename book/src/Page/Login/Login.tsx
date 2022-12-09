@@ -1,11 +1,39 @@
-import React, { SyntheticEvent } from "react";
-import { NavLink } from "react-router-dom";
+import axios from "axios";
+import React, { SyntheticEvent, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./login.css";
 
 function Login() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { email, password } = user;
+  const onInputChange = (e: any) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
   const handelSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
-    console.log("submit");
+    setIsLoading(true);
+    let url = "http://localhost:3000/api/v1/admin/login";
+
+    axios
+      .post(url, user)
+      .then((res: any) => {
+        setIsLoading(false);
+        console.log(res.data);
+        localStorage.setItem("auth-token", res.data.token);
+        navigate("/");
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+    setIsLoading(false);
   };
   return (
     <div className="log">
@@ -16,21 +44,28 @@ function Login() {
 
         <div className="Log_from">
           <form className="lifrom" onSubmit={handelSubmit}>
-            <label htmlFor="userName">User Name Or Email:</label>
+            <label htmlFor="userName">Email :</label>
             <input
-              placeholder="User Name & Email"
-              type={"text"}
-              className="logInput"
+              placeholder="Email"
+              type={"email"}
+              value={email}
+              onChange={onInputChange}
+              name="email"
+              className="loginInput"
             />
-
             <label htmlFor="userName">Password:</label>
             <input
+              onChange={onInputChange}
+              name="password"
+              value={password}
               placeholder="Password"
-              className="logInput"
+              className="loginInput"
               type={"password"}
               min={6}
             />
+
             <div className="log_btn">
+              {isLoading && <p>Sending Request...</p>}
               <button className="logButton libtn" type="submit">
                 Log In
               </button>

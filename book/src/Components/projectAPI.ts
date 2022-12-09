@@ -15,7 +15,7 @@ function delay(ms: number) {
 const projectAPI = {
   get(page = 1, limit = 20) {
     return fetch(`${baseUrl}category/list`)
-      .then(delay(0))
+      .then(delay(5))
       .then(parseJSON)
       .catch((error: TypeError) => {
         console.log("log client error" + error);
@@ -26,7 +26,7 @@ const projectAPI = {
   },
   getbook() {
     return fetch(`${baseUrl}book/list`)
-      .then(delay(10))
+      .then(delay(30))
       .then(parseJSON)
       .catch((error: TypeError) => {
         console.log("log client error" + error);
@@ -41,7 +41,7 @@ const projectAPI = {
       method: "POST",
       body: JSON.stringify({ name: category }),
     })
-      .then(delay(10))
+      .then(delay(30))
       .then(parseJSON)
       .catch((err: TypeError) => {
         console.log("cetegory add err", err);
