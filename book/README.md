@@ -45,14 +45,15 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-Date: 8 Dec, 2022
-Technology: Node JS
-Reports To:
+    Date: 9 Dec, 2022
+    Technology: Node JS
+    Reports To:
 
-Today I have worked on:
+    Today I have worked on:
 
-Category Data Posted. in Backend usinf from data.
-Data view Book data in dom & post Book Data in progres.
+    Book Images Posted. in Backend using from data.
+    Data view Book data in dom & post Book Data in progres.
+    Login & Sign Up From Create. & Auth-token is  Stor  & remove in localstorge .
 
-Thanks & Regards,
-Hardik Chauhan
+    Thanks & Regards,
+    Hardik Chauhan

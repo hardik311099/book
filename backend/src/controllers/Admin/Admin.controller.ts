@@ -16,7 +16,7 @@ export class AdminController extends ApplicationController {
     } else {
       req.condition = { where: { email: req.body.email } };
     }
-    return this._findOne(req, res, (data) => {
+    return super._findOne(req, res, (data) => {
       if (data.authenticate(req.body.password))
         return res.status(200).send({
           success: true,
@@ -27,9 +27,7 @@ export class AdminController extends ApplicationController {
       else
         return res.status(401).send({
           success: false,
-          errors: [
-            { message: 'Authentication failed.👎 Wrong Password or email.' },
-          ],
+            message: 'Authentication failed.👎 Wrong Password or email.' 
         });
     });
   }

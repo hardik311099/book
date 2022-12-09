@@ -25,7 +25,7 @@ function Book() {
         // let cate = response.map((data: any) => data);
         // console.log(cate);
 
-        setbook(data.data.sort());
+        setbook(data.data);
       } catch (error) {
         console.log(error);
       }

@@ -11,10 +11,19 @@ class ApplicationController {
 
   async _create(req, res, options = {}, callback = null) {
     console.log(req.body);
-    console.log(req.file);
+    // let book={
+    //   bookname: req.body.bookname,
+    //   authore: req.body.authore,
+    //   images: [req.files[0].originalname],
+    //   category_id: req.body.category_id,
+    //   price: req.body.price,
+    // }
+    console.log(   req.body.category_id);
+ 
+    // console.log("req===",req);[req.files[0].originalname],
     const reqFiles = [];
     // const url = req.protocol + '://' + req.get('host');
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < req.files.length; i++) {
       reqFiles.push('/img/' + req.files[i].originalname);
     }
     return db[model]
@@ -22,8 +31,8 @@ class ApplicationController {
         bookname: req.body.bookname,
         authore: req.body.authore,
         images: reqFiles.map((f) => f),
-        category_id: req.body.category_id,
-        price: req.body.price,
+        category_id:( req.body.category_id as number),
+        price: (req.body.price as number),
       })
       .then((appuser) => {
         return res.status(201).send({
@@ -33,6 +42,8 @@ class ApplicationController {
         });
       })
       .catch((error) => {
+        console.log('ERROR======',error);
+        
         return res.status(400).json({ errors: error });
       });
   }

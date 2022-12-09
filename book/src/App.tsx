@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import "./App.css";
@@ -12,6 +12,8 @@ import Login from "./Page/Login/Login";
 import Signup from "./Page/SignUp/Signup";
 
 function App() {
+  const [isLogin, setisLogin] = useState(false);
+
   return (
     <Router>
       <div className="App">

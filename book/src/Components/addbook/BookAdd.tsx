@@ -1,81 +1,79 @@
 import axios from "axios";
-// eslint-disable-next-line
-import React, { useEffect, useState } from "react";
-// eslint-disable-next-line
-import { NavLink, useNavigate } from "react-router-dom";
+
+import React, { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 
 import "./bookadd.css";
 
 function BookAdd() {
   // eslint-disable-next-line
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
+  const [files, setFiles] = useState([]);
+  const [bookname, setBookname] = useState("");
+  const [authore, setAuthore] = useState("");
 
-  const [category, setCategory] = useState([]);
-  const [category_id, setCategory_id] = useState("");
-  const [bookname, setbookname] = useState("");
-  const [price, setprice] = useState("");
-  const [authore, setauthore] = useState("");
-  const [file, setFile] = useState([]);
-
-  // const onChangeFiles = (e: any) => {
-  //   setFile(e.target.files);
-  // };
-
-  // const getCategoryId = () => {};
-  const handleFileEvent = (e: any) => {
-    setFile(e.target.files);
-  };
-  const handlebooknameEvent = (e: any) => {
-    setbookname(e.target.value);
-  };
-  const handleauthoreEvent = (e: any) => {
-    setauthore(e.target.value);
-  };
-  const handleCategoryEvent = (e: any) => {
-    setCategory_id(e.target.value);
-  };
-  const handlePriceEvent = (e: any) => {
-    setprice(e.target.value);
-  };
-
-  // const onInputChange = (e: any) => {
-  //   setData({ ...data, [e.target.name]: e.target.value });
-  // };
-
-  function submitHandler(e: any): void {
+  const onInputChangePrice = (e: any) => {
     e.preventDefault();
-    console.log("1234");
-    var formData = new FormData();
-    formData.append("bookname", bookname);
-    formData.append("authore", authore);
-    file.map((file, index) => {
-      formData.append(`file${index}`, file);
-    });
-    formData.append("category_id", category_id);
-    formData.append("price", price);
+    setPrice(e.target.value);
+  };
+  const getCategoryId = (e: any) => {
+    e.preventDefault();
+    console.log("cetogory id", e.target.value);
+
+    setCategory(e.target.value);
+  };
+  const onInputChangeBookname = (e: any) => {
+    e.preventDefault();
+    setBookname(e.target.value);
+  };
+  const onInputChangeAuthore = (e: any) => {
+    e.preventDefault();
+    setAuthore(e.target.value);
+  };
+  const onChangeFiles = (e: any) => {
+    e.preventDefault();
+    setFiles(e.target.files);
+  };
+
+  const submitHandler = (e: any) => {
+    e.preventDefault();
+    // console.log("1234", files);
+
+    var formdata = new FormData();
+    formdata.append("bookname", bookname);
+    formdata.append("authore", authore);
+    formdata.append("category_id", category);
+    formdata.append("price", price);
+    for (let i = 0; i < files.length; i++) {
+      formdata.append("file", files[i]);
+    }
+    // formdata.append("file", files);
 
     axios
-      .post("http://localhost:3000/api/v1/book/create", formData, {
+      .post("http://localhost:3000/api/v1/book/create", formdata, {
         headers: {
-          " Content-Type": "multipart/form-data",
+          "content-type": "multipart/form-data",
         },
       })
       .then((res: any) => {
         console.log(res);
-
-        // navigate("/");
+        navigate("/");
       })
       .catch((err) => {
         alert(err.message);
       });
-  }
+  };
 
   const getData = async () => {
     try {
       const response = await axios.get(
         "http://localhost:3000/api/v1/category/list"
       );
-      setCategory(response.data.data);
+      setData(response.data.data);
       console.log(response.data.data);
     } catch (error) {
       console.log(error);
@@ -90,10 +88,10 @@ function BookAdd() {
           </div>
 
           <div className="bookadd_from">
-            <form className="bookaddfrom" encType="" onSubmit={submitHandler}>
+            <form className="bookaddfrom" onSubmit={submitHandler}>
               <label>Book Name:</label>
               <input
-                onChange={handlebooknameEvent}
+                onChange={onInputChangeBookname}
                 placeholder="Book Name"
                 type={"text"}
                 name="bookname"
@@ -103,7 +101,7 @@ function BookAdd() {
               <label>Authore :</label>
               <input
                 name="authore"
-                onChange={handleauthoreEvent}
+                onChange={onInputChangeAuthore}
                 placeholder="Authore"
                 type={"text"}
                 className="bookaddInput"
@@ -111,10 +109,9 @@ function BookAdd() {
               />
               <label>Images :</label>
               <input
+                onChange={onChangeFiles}
                 name="file"
                 placeholder="Chooose File"
-                value={file}
-                onChange={handleFileEvent}
                 className="bookaddInput"
                 type={"file"}
                 multiple
@@ -125,9 +122,9 @@ function BookAdd() {
                 name="category_id"
                 className="bookaddInput"
                 onClick={getData}
-                onChange={handleCategoryEvent}
+                onChange={getCategoryId}
               >
-                {category.map((e: any) => (
+                {data.map((e: any) => (
                   <option key={e.id} value={e.id}>
                     {e.name}
                   </option>
@@ -138,7 +135,7 @@ function BookAdd() {
               <input
                 name="price"
                 value={price}
-                onChange={handlePriceEvent}
+                onChange={onInputChangePrice}
                 placeholder="Price"
                 type={"number"}
                 className="bookaddInput"

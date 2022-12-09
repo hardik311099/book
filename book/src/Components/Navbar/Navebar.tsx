@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./navbar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import Login from "../../Page/Login/Login";
 
 function Navebar() {
+  const navigate = useNavigate();
+  const [isLogin, setisLogin] = useState(false);
+  // useEffect(() => {
+  //   if (localStorage.getItem("auth-token")) {
+  //     setisLogin(true);
+  //   }
+  // }, []);
+
+  const loginHandler = () => {
+    if (!localStorage.getItem("auth-token")) {
+      setisLogin(true);
+    } else {
+      localStorage.removeItem("auth-token");
+      setisLogin(true);
+      navigate("/login");
+    }
+  };
+  // const logoutHandler = () => {
+  //   localStorage.removeItem("auth-token");
+  //   setisLogin(false);
+  // };
   let handlClick = () => {
     console.log("button");
   };
@@ -33,8 +55,29 @@ function Navebar() {
           <NavLink to="/category" className="button rounded">
             Category
           </NavLink>
-          <NavLink to="/signup" className="button btn rounded">
-            Sign Up
+          {/* {isLogin ? (
+            <NavLink
+              to="/login"
+              onClick={logoutHandler}
+              className="button btn rounded"
+            >
+              Log Out
+            </NavLink>
+          ) : (
+            <NavLink
+              to="/login"
+              onClick={loginHandler}
+              className="button btn rounded"
+            >
+              Login
+            </NavLink> */}
+          {/* )} */}
+          <NavLink
+            to="/login"
+            onClick={loginHandler}
+            className="button btn rounded"
+          >
+            {isLogin ? "Log Out" : "Log In"}
           </NavLink>
         </div>
       </header>

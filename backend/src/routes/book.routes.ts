@@ -11,7 +11,7 @@ export function initRoutes(app, router) {
     res.status(200).send({ message: 'Admin Server is running!' })
   );
 
-  apiRoute.post(END_POINT.CREATE, uploadFile.array('file', 6), Book.create);
+  apiRoute.post(END_POINT.CREATE, uploadFile.array('file'), Book.create);
 
   apiRoute.get(END_POINT.GET, Book.list);
 

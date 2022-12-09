@@ -24,7 +24,7 @@ class ApplicationController {
         )
         .catch((error) => res.status(400).json({ errors: error }));
     }
-    return res.status(400).json({ message: 'user already exits!' });
+    return res.status(400).json({success:false, message: 'user already exits!' });
   }
 
   _list(req, res, options = {}, callback = null) {
@@ -35,15 +35,14 @@ class ApplicationController {
   }
 
   _findOne(req, res, callback = null) {
-    db[model]
-      .findOne(req.condition)
-      .then((data) => {
-        if (typeof callback === 'function') callback(data);
-        else res.status(200).send(data);
-      })
-      .catch((error) => res.status(400).json({ errors: error }));
+   return db[model].findOne(req.condition || {}).then(data => {
+      if (typeof (callback) === 'function')
+        callback(data);
+      else
+        res.status(200).send(data);
+    }
+    ).catch(error => res.status(400).json({ errors: error }));
   }
-
   _update(req, res, options = {}, callback = null) {
     const id = req.params.id;
     return db[model]

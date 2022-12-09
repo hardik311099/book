@@ -15,7 +15,7 @@ function delay(ms: number) {
 const projectAPI = {
   get(page = 1, limit = 20) {
     return fetch(`${baseUrl}category/list`)
-      .then(delay(5))
+      .then(delay(50))
       .then(parseJSON)
       .catch((error: TypeError) => {
         console.log("log client error" + error);

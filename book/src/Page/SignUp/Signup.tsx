@@ -25,14 +25,18 @@ function Signup() {
 
     axios
       .post(url, user)
+      .then((response) => {
+        let status = response.data.success;
+      })
       .then((res: any) => {
         setIsLoading(false);
-        console.log(res.data);
-        localStorage.setItem("auth-token", res.data.token);
+
+        // localStorage.setItem("auth-token", res.data.token);
         navigate("/");
       })
       .catch((err) => {
-        alert(err.message);
+        alert(err.response.data.message);
+        console.log(err.response.data.message);
       });
     setIsLoading(false);
   };
