@@ -26,7 +26,7 @@ const projectAPI = {
   },
   getbook() {
     return fetch(`${baseUrl}book/list`)
-      .then(delay(30))
+      .then(delay(1000))
       .then(parseJSON)
       .catch((error: TypeError) => {
         console.log("log client error" + error);

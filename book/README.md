@@ -45,15 +45,16 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-    Date: 9 Dec, 2022
+    Date: 12 Dec, 2022
     Technology: Node JS
     Reports To:
 
     Today I have worked on:
 
-    Book Images Posted. in Backend using from data.
-    Data view Book data in dom & post Book Data in progres.
-    Login & Sign Up From Create. & Auth-token is  Stor  & remove in localstorge .
+    Edysor Bugs Finding
+    Data view Book data in dom.
+    Post Book Data & Sorting, Serching.
+
 
     Thanks & Regards,
     Hardik Chauhan

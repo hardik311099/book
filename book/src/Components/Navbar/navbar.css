@@ -23,21 +23,6 @@
   flex: 9;
 }
 
-.searchInput {
-  border: none;
-  width: 60%;
-  border-radius: 7px;
-  height: 30px;
-  margin-right: 5px;
-}
-.searchbarButton {
-  height: 30px;
-  width: 70px;
-  border: none;
-  border-radius: 5px;
-  font-weight: 700;
-  cursor: pointer;
-}
 .topbarRight {
   justify-content: flex-end;
   margin-right: 20px;

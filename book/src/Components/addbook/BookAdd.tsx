@@ -22,7 +22,7 @@ function BookAdd() {
   };
   const getCategoryId = (e: any) => {
     e.preventDefault();
-    console.log("cetogory id", e.target.value);
+    console.log("cetogory_id", e.target.value);
 
     setCategory(e.target.value);
   };

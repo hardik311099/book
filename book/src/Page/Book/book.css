@@ -39,3 +39,28 @@
   color: white;
   cursor: pointer;
 }
+
+.searchInput {
+  border: 1px solid gray;
+  width: 300px;
+  border-radius: 7px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.searchbarButton {
+  height: 30px;
+  width: 70px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bk {
+  width: 150px;
+}
+
+.ul {
+  margin: 0;
+}

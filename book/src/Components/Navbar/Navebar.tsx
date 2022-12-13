@@ -1,6 +1,8 @@
+// eslint-disable-next-line
 import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import { NavLink, useNavigate } from "react-router-dom";
+// eslint-disable-next-line
 import Login from "../../Page/Login/Login";
 
 function Navebar() {
@@ -25,9 +27,7 @@ function Navebar() {
   //   localStorage.removeItem("auth-token");
   //   setisLogin(false);
   // };
-  let handlClick = () => {
-    console.log("button");
-  };
+
   return (
     <div>
       <header className="sticky">
@@ -38,15 +38,7 @@ function Navebar() {
             </NavLink>
           </div>
           <div className="topbarCenter">
-            <div className="searchBar">
-              <input
-                placeholder="Search for Book and Category "
-                className="searchInput"
-              />
-              <button onClick={handlClick} className="searchbarButton">
-                Search
-              </button>
-            </div>
+            <div className="searchBar"></div>
           </div>
           <NavLink to="/" className="button rounded">
             <span className="icon-home"></span>
