@@ -1,17 +1,14 @@
-<p align="center">
-  <img src="./sarvadhi.png" alt="sarvadhi solution" width="400" />
-</p>
+
 
 <h1 align="center">Express With Typescript</h1>
 
 <p align="center">
   <b>A delightful way to building a Node.js RESTful API Services with beautiful code written in TypeScript.</b></br>
-  <sub>Made with ❤️ by <a href="https://sarvadhi.com/">Sarvadhi Solution pvt ltd</a>, <a href="https://github.com/MaySolanki26">Mayur Solanki</a></sub>
+  <sub>Made with ❤️ by Sarvadhi Solution pvt ltd</a>,Hardik Chauhan</a></sub>
 </p>
 
 <br />
 
-![divider](./sarvadhi-divider.png)
 
 ## ❯ Why
 

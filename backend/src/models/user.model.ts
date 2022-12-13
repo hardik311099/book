@@ -23,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         validate: {
           len: {
-            args: [6, 128],
+            args: [ 6, 128 ],
             msg: 'Email address must be between 6 and 128 characters in length',
           },
           isEmail: {
@@ -48,7 +48,7 @@ module.exports = function (sequelize, DataTypes) {
     }
   );
 
-  Admin.beforeSave((admin) => {
+  Admin.beforeSave(admin => {
     if (admin.changed('password')) {
       admin.password = bcrypt.hashSync(admin.password, bcrypt.genSaltSync(10));
     }
